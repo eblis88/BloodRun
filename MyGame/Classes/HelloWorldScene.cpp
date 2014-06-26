@@ -198,9 +198,9 @@ void HelloWorld::initjoystick()
 }
 
 void HelloWorld::addEnemy(float dt)
-{
+{/*
 	if (_enemies->getNpcs().size() >= 1)
-		return;
+		return;*/
 
 	Point pos;
 	if (CCRANDOM_0_1() < 0.25)
@@ -544,7 +544,7 @@ void HelloWorld::addEnemyAtPos(const Point& pos)
 {
 	
 	Npc* newNpc = _enemies->createNpc(pos, 1);
-	this->addChild(newNpc->getSprite());
+	this->addChild(newNpc);
 	//newNpc->rotateSchedule();
 	//newNpc->moveSchedule();
 	//this->animateEnemy(enemy);

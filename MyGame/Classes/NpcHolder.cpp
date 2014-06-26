@@ -7,8 +7,9 @@ Npc* NpcManager::createNpc(const Point& pos, int type)
 {
 	//@todo 根据type找到对应的enemy
 	string npcCode = "enemy1.png";
-	Npc* newNpc = new Npc();
-	newNpc->_npc_sprite = Sprite::create(npcCode);
+	
+	auto sprite = Sprite::create(npcCode);
+	Npc* newNpc = new Npc(sprite);
 	newNpc->setPosition(pos);
 	newNpc->setMoveRegion(_sceneSize);
 	_npcs.pushBack(newNpc);
@@ -45,8 +46,8 @@ Buff* NpcManager::removeNpc(Npc* npc)
 {
 	_killedNpcs++;
 	auto buff = npc->dropBuff(_killedNpcs);
-	npc->getSprite()->stopAllActions();
-	npc->getSprite()->removeFromParentAndCleanup(true);
+	npc->stopAllActions();
+	npc->removeFromParentAndCleanup(true);
 	_npcs.eraseObject(npc);
 	//delete npc;
 	return buff;

@@ -61,7 +61,7 @@ Npc::Npc(Sprite* tex): _npc_sprite(nullptr)
 void Npc::beAttack(Character* player, Layer* layer)
 {
 	string filename = "blood/";
-	float distance = _npc_sprite->getPosition().distanceSquared(player->getPosition());
+	float distance = getPosition().distanceSquared(player->getPosition());
 	float power = player->getGun()->getPower();
 
 	if (distance < 1) distance = 1;
@@ -94,7 +94,7 @@ void Npc::beAttack(Character* player, Layer* layer)
 		blood->setRotation(angle);
 		Vec2 diff = Vec2(bcos(-angle) * CCRANDOM_0_1() * _npc_sprite->getContentSize().width,
 			bsin(-angle) * CCRANDOM_0_1() * _npc_sprite->getContentSize().height);
-		blood->setPosition(_npc_sprite->getPosition() + diff);
+		blood->setPosition(getPosition() + diff);
 		layer->addChild(blood, -2);
 		blood->runAction(
 			Sequence::create(
@@ -123,7 +123,7 @@ void Npc::move(float durationMod)
 	
 
 	//_npc_sprite->setPosition(getPosition());
-	_npc_sprite->runAction(getMoveAction(durationMod));
+	runAction(getMoveAction(durationMod));
 	/*_npcSprite->runAction(Sequence::create(
 		mov,
 		CallFuncN::create(CC_CALLBACK_0(Npc::moveFinished, this)),NULL));*/
@@ -172,7 +172,7 @@ void Npc::rotate(float cocosAngle, float durationMod)
 	//_npcSprite->setRotation(angle);
 
 	_faceToPlayerAngle = cocosAngle;
-	_npc_sprite->runAction(rotateWithAction(cocosAngle));
+	runAction(rotateWithAction(cocosAngle));
 	/*_npcSprite->runAction(Sequence::create(
 		action,
 		CallFuncN::create(CC_CALLBACK_0(Npc::roteateFinished, this)), NULL));*/

@@ -38,8 +38,8 @@ public:
 
 	const string& int2str(const int &int_temp);
 
-	const Vec2& getPosition() { return _npc_sprite->getPosition(); }
-	virtual void setPosition(const Vec2& pos) { _npc_sprite->setPosition(pos); }
+	//const Vec2& getPosition() { return _npc_sprite->getPosition(); }
+	//virtual void setPosition(const Vec2& pos) { _npc_sprite->setPosition(pos); }
 	MoveTo* getMoveAction(float durationMod = 1);
 	RotateTo* rotateWithAction(float angle, float durationMod = 1, bool execute = true);
 	int _faceAngle;

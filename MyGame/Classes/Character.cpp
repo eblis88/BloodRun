@@ -49,7 +49,7 @@ Character::Character() : _dirSprite(nullptr)
 	_dirSprite->setAnchorPoint(Vec2(0, 0.5));
 
 	this->addChild(_npc_sprite);
-	this->addChild(_dirSprite);
+	this->addChild(_dirSprite, 2);
 
 	npc_init();
 
