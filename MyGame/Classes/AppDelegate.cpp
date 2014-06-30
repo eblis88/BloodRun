@@ -29,6 +29,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	//DataDictionary::initDictionary();
 	//DataDictionary::getData("type");
 
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("assets.plist", "assets.png");
+
     // create a scene. it's an autorelease object
     auto scene = ModeSelect::createScene();
 

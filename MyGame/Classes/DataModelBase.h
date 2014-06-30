@@ -21,3 +21,5 @@ using namespace std;
 float getCocosAngle(const Vec2& vect);
 
 Vec2 getCocosVector(float angle);
+
+Sprite* createWithAssets(string filename);

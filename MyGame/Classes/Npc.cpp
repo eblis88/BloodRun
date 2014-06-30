@@ -1,5 +1,6 @@
 #include "Npc.h"
 #include "NpcManager.h"
+#include "DataModelBase.h"
 #include <Buff.h>
 #include <bmath.h>
 #include <Character.h>
@@ -88,7 +89,7 @@ void Npc::beAttack(Character* player, Layer* layer)
 		int rndFileName = 5;//(int)(CCRANDOM_0_1() * 12) + 1;
 		CCString *ns = CCString::createWithFormat("%d", rndFileName);
 		string rndfile = filename +ns->_string + ".png";
-		Sprite* blood = Sprite::create(rndfile);
+		Sprite* blood = createWithAssets(rndfile);
 		
 		float angle = CCRANDOM_0_1() * 365;
 		blood->setRotation(angle);

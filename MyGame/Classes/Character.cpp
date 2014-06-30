@@ -9,7 +9,8 @@ Character::Character() : _dirSprite(nullptr)
 	// ×ßÂ·¶¯»­
 	{
 		SpriteFrameCache* cache = SpriteFrameCache::getInstance();
-		cache->addSpriteFramesWithFile("Player.plist","Player.png");
+		if (cache->getSpriteFrameByName("Player.00.png") == nullptr)
+			cache->addSpriteFramesWithFile("assets.plist", "assets.png");
 
 		_shootframe = SpriteFrameCache::getInstance()->getSpriteFrameByName("PlayerShoot.png");
 
@@ -43,9 +44,11 @@ Character::Character() : _dirSprite(nullptr)
 	_animation->setDelayPerUnit(2.8/14);
 	_animation->setRestoreOriginalFrame(true);*/
 
-	_npc_sprite = Sprite::create("Player02.png");
+	_npc_sprite = createWithAssets("Player02.png");
 	_npc_sprite->setAnchorPoint(Vec2(0.25,0.5));
-	_dirSprite = Sprite::create("Arrow1.png");
+
+
+	_dirSprite = createWithAssets("Arrow1.png");
 	_dirSprite->setAnchorPoint(Vec2(0, 0.5));
 
 	this->addChild(_npc_sprite);
@@ -153,7 +156,7 @@ void Character::shoot(const Vec2& shootAngle)
 	auto ani_cache = AnimationCache::getInstance()->getAnimation("gunFire");
 	auto aniTo = Animate::create(ani_cache);
 
-	Sprite* gun_fire = Sprite::create("gunfire00.png");
+	Sprite* gun_fire = createWithAssets("gunfire00.png");
 	addChild(gun_fire,1);
 	gun_fire->setPosition(Vec2(28,-1));
 

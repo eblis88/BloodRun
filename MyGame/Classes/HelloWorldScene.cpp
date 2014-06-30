@@ -424,7 +424,7 @@ void HelloWorld::shoot(const Point& touchDiffPos)
 
 		
 		// Ëæ»úÉ¢Éä¼¸·¢bullet
-		Sprite* bullet_left = Sprite::create("bullet_left.png");
+		Sprite* bullet_left = createWithAssets("bullet_left.png");
 		this->addChild(bullet_left, -1);
 
 		float bullet_left_angle = _player->getRotation() + (CCRANDOM_0_1()*120 - 60)/90;

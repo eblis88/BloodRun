@@ -18,7 +18,7 @@ Gun::Gun(int type)
 	_bulletSpd = v["BulletSpd"].GetInt();
 	_bulletCode  = v["BulletCode"].GetString() + string(".png");
 	_weaponCode = v["GunCode"].GetString() + string(".png");
-	_weaponSprite = Sprite::create("Buff/" + _weaponCode); 
+	_weaponSprite = createWithAssets( _weaponCode); 
 
 	_oneShotStep = v["OneShotStep"].GetDouble();
 	_bulletLineLength = v["BulletLineLength"].GetInt();
@@ -64,7 +64,7 @@ void Gun::reload()
 
 Sprite* Gun::createBullet()
 { 
-	Sprite* bullet = Sprite::create(_bulletCode); 
+	Sprite* bullet = createWithAssets(_bulletCode); 
 	bullet->setAnchorPoint(Vec2(1,0.5));
 	bullet->setScaleX(0.1);
 

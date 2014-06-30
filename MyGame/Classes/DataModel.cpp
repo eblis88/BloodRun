@@ -14,6 +14,18 @@ float getCocosAngle(const Vec2& vect)
 	return -cocosAngle;
 }
 
+Sprite* createWithAssets(string filename)
+{
+	Sprite* ret = Sprite::create();
+
+	if (SpriteFrameCache::getInstance()->getSpriteFrameByName(filename) == nullptr)
+		SpriteFrameCache::getInstance()->addSpriteFramesWithFile("assets.plist", "assets.png");
+
+	ret->setSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName(filename));
+
+	return ret;
+}
+
 Vec2 getCocosVector(float angle)
 {
 	Vec2 ret;

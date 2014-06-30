@@ -1,5 +1,6 @@
 #include "Buff.h"
 #include "Gun.h"
+#include "DataModelBase.h"
 
 Buff::~Buff()
 {
@@ -24,6 +25,6 @@ Buff* Buff::createRandomBuff()
 
 	Buff* buff = new Buff();
 	buff->setGun(nullptr);
-	buff->setSprite(Sprite::create(buffs[(int)CCRANDOM_0_1()*2]));
+	buff->setSprite(createWithAssets(buffs[(int)CCRANDOM_0_1()*2]));
 	return buff;
 }

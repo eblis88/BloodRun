@@ -1,5 +1,6 @@
 #include "NpcManager.h"
 #include <Character.h>
+#include "DataModelBase.h"
 #include <Npc.h>
 #include <bmath.h>
 
@@ -8,7 +9,7 @@ Npc* NpcManager::createNpc(const Point& pos, int type)
 	//@todo 根据type找到对应的enemy
 	string npcCode = "enemy1.png";
 	
-	auto sprite = Sprite::create(npcCode);
+	auto sprite = createWithAssets(npcCode);
 	Npc* newNpc = new Npc(sprite);
 	newNpc->setPosition(pos);
 	newNpc->setMoveRegion(_sceneSize);
