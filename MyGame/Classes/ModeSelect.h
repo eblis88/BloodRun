@@ -2,8 +2,8 @@
 
 #include "cocos2d.h"
 #include "cocos-ext.h"
-#include "ui\CocosGUI.h"
-#include "ui\GUIDefine.h"
+#include "ui/CocosGUI.h"
+#include "ui/GUIDefine.h"
 #include "editor-support/cocostudio/CCSGUIReader.h"
 
 USING_NS_CC;
