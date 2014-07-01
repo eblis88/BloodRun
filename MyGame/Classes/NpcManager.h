@@ -28,7 +28,7 @@ public:
 	Vector<Npc*> getNpcsVectorClone(const Vec2& vec);
 	//¼ÇµÃÉ¾Vector
 	Vector<Npc*> getNpcsVectorClone(float minAngle, float maxAngle);
-	Buff* removeNpc(Npc* npc);
+    Buff* removeNpc(Npc* npc);
 private:
 	Vector<Npc*> _npcs;
 	Size _sceneSize;

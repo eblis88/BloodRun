@@ -1,7 +1,7 @@
 #include "Npc.h"
 #include "NpcManager.h"
 #include "DataModelBase.h"
-#include <Buff.h>
+//#include <Buff.h>
 #include <bmath.h>
 #include <Character.h>
 #include <sstream>
@@ -10,6 +10,7 @@ Npc::Npc()
 {
 	npc_init();
 }
+
 
 Buff* Npc::dropBuff(int killedNpcs)
 {
@@ -61,6 +62,7 @@ Npc::Npc(Sprite* tex): _npc_sprite(nullptr)
 
 void Npc::beAttack(Character* player, Layer* layer)
 {
+    /*
 	string filename = "blood/";
 	float distance = getPosition().distanceSquared(player->getPosition());
 	float power = player->getGun()->getPower();
@@ -110,6 +112,7 @@ void Npc::beAttack(Character* player, Layer* layer)
 
 
 	_hp -= power;
+     */
 }
 
 const string& Npc::int2str(const int &int_temp)  

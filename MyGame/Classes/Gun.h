@@ -13,49 +13,49 @@ public:
 
 	//bool UTF8ToGB(string &szOut ,string str);
 
-	// Ê£Óà×Óµ¯Êý
+	// Â Â£â€â€¡â—Šâ€ÂµÃ˜Â Ë
 	CC_SYNTHESIZE(int, _leftBullets, LeftBullets);
 	CC_SYNTHESIZE(string, _gunName, GunName);
-	// Ç¹ÀàÐÍ
+	// Â«Ï€Â¿â€¡â€“Ã•
 	CC_SYNTHESIZE(int, _type, Type);
 
-	// ×Óµ¯·ÉÐÐËÙ¶È
-	// µ¥Î»£ºÏñËØ
+	// â—Šâ€ÂµÃ˜âˆ‘â€¦â€“â€“Ã€Å¸âˆ‚Â»
+	// Âµâ€¢Å’ÂªÂ£âˆ«Å“Ã’Ã€Ã¿
 	CC_SYNTHESIZE(int, _bulletSpd, BulletSpd);
-	// É¢Éä½Ç¶È
-	// µ¥Î»£º»¡¶È
+	// â€¦Â¢â€¦â€°Î©Â«âˆ‚Â»
+	// Âµâ€¢Å’ÂªÂ£âˆ«ÂªÂ°âˆ‚Â»
 	CC_SYNTHESIZE(float, _scatterAngle, ScatterAngle);
-	// ²¢·¢×Óµ¯Êý
+	// â‰¤Â¢âˆ‘Â¢â—Šâ€ÂµÃ˜Â Ë
 	CC_SYNTHESIZE(int, _oneSpawnBullets, OneSpawnBullets);
-	// µ¥·¢×Óµ¯ÍþÁ¦
+	// Âµâ€¢âˆ‘Â¢â—Šâ€ÂµÃ˜Ã•Ë›Â¡Â¶
 	CC_SYNTHESIZE(int, _power, Power);
-	// »»µ¯Ê±¼ä
-	// µ¥Î»£ºÃë
+	// ÂªÂªÂµÃ˜Â Â±Âºâ€°
+	// Âµâ€¢Å’ÂªÂ£âˆ«âˆšÃŽ
 	CC_SYNTHESIZE(float, _reloadTime, ReloadTime);
-	//// µã»÷Ò»´Î¼¸·¢×Óµ¯
+	//// Âµâ€žÂªËœâ€œÂªÂ¥Å’Âºâˆâˆ‘Â¢â—Šâ€ÂµÃ˜
 	//CC_SYNTHESIZE(int, _oneClickBllets, OneClickBullets);
-	// ×Óµ¯¶¯»­³ß´ç
+	// â—Šâ€ÂµÃ˜âˆ‚Ã˜Âªâ‰ â‰¥ï¬‚Â¥Ã
 	CC_SYNTHESIZE(int, _bulletLineLength, BulletLineLength);/*
 	CC_SYNTHESIZE(int, _bulletLineWidth, BulletLineWidth);*/
-	// µ¯¼ÐÊýÁ¿
+	// ÂµÃ˜Âºâ€“Â ËÂ¡Ã¸
 	CC_SYNTHESIZE(int, _bulletClip, BulletClip);
-	// µ¥·¢¼ä¸ô
+	// Âµâ€¢âˆ‘Â¢Âºâ€°âˆÃ™
 	CC_SYNTHESIZE(float, _oneShotStep, OneShopStep);
-	// ×Óµ¯ÉËº¦·¶Î§
-	// µ¥Î»£ºÏñËØ
+	// â—Šâ€ÂµÃ˜â€¦Ã€âˆ«Â¶âˆ‘âˆ‚Å’ÃŸ
+	// Âµâ€¢Å’ÂªÂ£âˆ«Å“Ã’Ã€Ã¿
 	CC_SYNTHESIZE(int, _bulletDmgWidth, BulletDmgWidth);
-	// ÊÇ·ñÊÇ´©Í¸µ¯
+	// Â Â«âˆ‘Ã’Â Â«Â¥Â©Ã•âˆÂµÃ˜
 	CC_SYNTHESIZE(bool, _isPenetrate, IsPenetrate);
-	// ×Óµ¯×îÔ¶·ÉÐÐ¾àÀë
-	// µ¥Î»£ºÏñËØ
+	// â—Šâ€ÂµÃ˜â—ŠÃ“â€˜âˆ‚âˆ‘â€¦â€“â€“Ã¦â€¡Â¿ÃŽ
+	// Âµâ€¢Å’ÂªÂ£âˆ«Å“Ã’Ã€Ã¿
 	CC_SYNTHESIZE(int, _maxLength, MaxLength);
-	// ×Óµ¯ÉäÆ«°ë¾¶
-	// µ¥Î»£ºÏñËØ
+	// â—Šâ€ÂµÃ˜â€¦â€°âˆ†Â´âˆžÃŽÃ¦âˆ‚
+	// Âµâ€¢Å’ÂªÂ£âˆ«Å“Ã’Ã€Ã¿
 	CC_SYNTHESIZE(float, _offsetDiameter, OffsetDiameter);
-	// ×Óµ¯ÉäÆ«¸ÅÂÊ
+	// â—Šâ€ÂµÃ˜â€¦â€°âˆ†Â´âˆâ‰ˆÂ¬Â 
 	CC_SYNTHESIZE(float, _offsetProbability, OffsetProbability);
-	// ºó×ùÁ¦
-	// µ¥Î»£ºÏñËØ
+	// âˆ«Ã›â—ŠË˜Â¡Â¶
+	// Âµâ€¢Å’ÂªÂ£âˆ«Å“Ã’Ã€Ã¿
 	CC_SYNTHESIZE(float, _recoilDiff, RecoilDiff);
 
 	Sprite* getBullet() {return _bulletSprite;}
@@ -71,14 +71,14 @@ public:
 	void setRotation(float rot) {
 		_bulletSprite->setRotation(rot);}
 		//_bulletPartile->setAngle(-180 - rot);}
-	// func »÷ÖÐÐ§¹û
-	// func Ð¯´øÊ±µÄÌØÊâÐ§¹û
+	// func ÂªËœÃ·â€“â€“ÃŸÏ€Ëš
+	// func â€“Ã˜Â¥Â¯Â Â±ÂµÆ’ÃƒÃ¿Â â€šâ€“ÃŸÏ€Ëš
 protected:
 	string _weaponCode;
 	string _bulletCode;
 
 	Sprite* _bulletSprite;
 	Sprite* _weaponSprite;
-	ParticleSystemQuad* _bulletPartile;
+	//ParticleSystemQuad* _bulletPartile;
 };
 

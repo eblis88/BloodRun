@@ -5,14 +5,14 @@
 #include <Buff.h>
 #include <Character.h>
 #include <Gun.h>
-#include <Skill.h>
-#include <AI.h>
+//#include <Skill.h>
+//#include <AI.h>
 #include <Npc.h>
-#include <NpcPrefix.h>
-#include <NpcWave.h>
+//#include <NpcPrefix.h>
+//#include <NpcWave.h>
 #include <NpcManager.h>
-#include <HRocker.h>
-#include <Bullet.h>
+//#include <HRocker.h>
+//#include <Bullet.h>
 #include <bmath.h>
 
 using namespace cocos2d;

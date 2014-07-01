@@ -9,7 +9,7 @@
 
 Gun::Gun(int type)
 {
-	auto doc = DataDictionary::Instance()->getDoc("gun.txt");  
+	auto doc = DataDictionary::Instance()->getDoc("gun.json");
 	rapidjson::Value &v =(*doc)[type];
 	_bulletSprite = nullptr;
 	_gunName = " ÷«π";

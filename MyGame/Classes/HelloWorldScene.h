@@ -4,7 +4,7 @@
 #include "cocos2d.h"
 #include <time.h>
 #include <string.h>
-#include <json/document.h>
+//#include <json/document.h>
 #include <Buff.h>
 
 using namespace cocos2d;
@@ -60,7 +60,7 @@ public:
 	//CC_SYNTHESIZE(int, _mode, Mode);
 
 	
-	rapidjson::Document doc;
+	//rapidjson::Document doc;
 private:
 	TMXTiledMap *_tileMap;// = nullptr;
 	Character *_player;// = nullptr;

@@ -65,7 +65,7 @@ bool ModeSelect::init()
      m_pLayout = Layer::create();
     addChild(m_pLayout);
 
-    auto _widget = GUIReader::getInstance()->widgetFromJsonFile("LevelSelect/LevelSelect.json");
+    auto _widget = GUIReader::getInstance()->widgetFromJsonFile("LevelSelect.json");
 	m_pLayout->addChild(_widget);
     
 	Size screenSize = CCDirector::getInstance()->getWinSize();
@@ -93,7 +93,7 @@ bool GunRush::init()
 	m_pLayout = Layer::create();
     addChild(m_pLayout);
 
-    auto _widget = GUIReader::getInstance()->widgetFromJsonFile("GunRush/GunRush.json");
+    auto _widget = GUIReader::getInstance()->widgetFromJsonFile("GunRush.json");
 	m_pLayout->addChild(_widget);
     
 	Size screenSize = CCDirector::getInstance()->getWinSize();

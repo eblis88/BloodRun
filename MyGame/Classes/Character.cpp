@@ -1,7 +1,7 @@
 #include "Character.h"
 #include "DataModelBase.h"
 #include <Npc.h>
-#include <Gun.h>
+//#include <Gun.h>
 #include <bmath.h>
 
 Character::Character() : _dirSprite(nullptr)

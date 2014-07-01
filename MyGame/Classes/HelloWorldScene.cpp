@@ -1,6 +1,6 @@
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
-#include "GameOverScene.h"
+//#include "GameOverScene.h"
 #include <DataModelBase.h>
 #include <algorithm>
 #include <functional>  
@@ -14,8 +14,8 @@
 #endif
 
 USING_NS_CC;
-using namespace CocosDenshion;
-using namespace cocos2d::ui;
+//using namespace CocosDenshion;
+//using namespace cocos2d::ui;
 
 HelloWorldHud *HelloWorld::_hud = NULL;
 
@@ -58,7 +58,7 @@ void HelloWorld::addBoxBodyForSprite(Sprite* sprite)
 
 HelloWorld::~HelloWorld()
 {
-	_player->release();
+	//_player->release();
 }
 
 void HelloWorld::onEnter()  
@@ -110,8 +110,8 @@ bool HelloWorld::init()
 	
 	/*_hud->maxSprite(doc[1]["type"].GetInt());*/
 
-	SimpleAudioEngine::getInstance()->preloadEffect("reload.wav");
-	SimpleAudioEngine::getInstance()->playBackgroundMusic("battle_music.mp3", true);
+	//SimpleAudioEngine::getInstance()->preloadEffect("reload.wav");
+	//SimpleAudioEngine::getInstance()->playBackgroundMusic("battle_music.mp3", true);
 
 	std::string file = "TileMap.tmx";
 	auto str = String::createWithContentsOfFile(FileUtils::getInstance()->fullPathForFilename(file.c_str()).c_str());
@@ -131,7 +131,7 @@ bool HelloWorld::init()
 
 	//_hud->numCollectedChanged(_player->getGun()->getGunName());
 
-	setViewPointCenter(_player->getPosition());
+	//setViewPointCenter(_player->getPosition());
 
 	addChild(_tileMap, -3);
 
@@ -151,7 +151,7 @@ bool HelloWorld::init()
 	_numCollected = 0;
     
 	this->schedule(schedule_selector(HelloWorld::hitTest));
-	this->schedule(schedule_selector(HelloWorld::characterHitTest));
+	//this->schedule(schedule_selector(HelloWorld::characterHitTest));
 	this->schedule(schedule_selector(HelloWorld::addEnemy), 0.1f);
 	this->schedule(schedule_selector(HelloWorld::npcMove), 1/60);
 	//this->schedule(schedule_selector(HelloWorld::renderProjectile));
@@ -180,7 +180,7 @@ bool HelloWorld::init()
 void HelloWorld::npcMove(float dt)
 {
 	//@todo 把这个for拆开
-		//_enemies->rotate(1, _rederNpcIndex, dt * 60);
+		_enemies->rotate(1, _rederNpcIndex, dt * 60);
 		_enemies->move(1, _rederNpcIndex,1);// dt * 60);
 		_rederNpcIndex++;
 
@@ -261,6 +261,7 @@ void HelloWorld::update(float dt)
 
 void HelloWorld::trySetPlayerPos(const Point& pos)
 {
+    /*
 	Point new_pos = pos;
 	if (pos.x < _player->getContentSize().width / 2) new_pos.x = _player->getContentSize().width / 2;
 	if (pos.x > _tileMap->getContentSize().width - _player->getContentSize().width / 2)
@@ -275,20 +276,21 @@ void HelloWorld::trySetPlayerPos(const Point& pos)
 		_player->walkTo(new_pos - _player->getPosition());
 		this->setViewPointCenter(_player->getPosition());
 	}
+     */
 }
 
 void HelloWorld::win()
 {
-	GameOverScene *gameOverScene = GameOverScene::create();
-	gameOverScene->getLayer()->getLabel()->setString("You Win!");
-	Director::getInstance()->replaceScene(gameOverScene);
+	//GameOverScene *gameOverScene = GameOverScene::create();
+	//gameOverScene->getLayer()->getLabel()->setString("You Win!");
+	//Director::getInstance()->replaceScene(gameOverScene);
 }
 
 void HelloWorld::lose()
 {
-	GameOverScene *gameOverScene = GameOverScene::create();
-	gameOverScene->getLayer()->getLabel()->setString("You Lose!");
-	Director::getInstance()->replaceScene(gameOverScene);
+	//GameOverScene *gameOverScene = GameOverScene::create();
+	//gameOverScene->getLayer()->getLabel()->setString("You Lose!");
+	//Director::getInstance()->replaceScene(gameOverScene);
 }
 
 void HelloWorld::getFuncY(const Point& touch, const Point& player, Point& end, Point& bullet_left_end, float scatterAngle = 0)
@@ -358,6 +360,7 @@ void HelloWorld::shoot(const Point& touchDiffPos)
 	// Find where the touch is
 	//auto touchLocation = touch->getLocation();
 	
+    
 	auto pos = touchDiffPos;
 
 	_player->shoot(touchDiffPos);
@@ -395,9 +398,6 @@ void HelloWorld::shoot(const Point& touchDiffPos)
 		getFuncY(pos, _player->getPosition(), realDest, bullet_leftDest, CCRANDOM_0_1() * gun->getScatterAngle());
 		auto end = realDest - _player->getPosition();
 
-		// Determine the length of how far we're shooting
-		/*int offRealX = realX - bullet->getPosition().x;
-		int offRealY = realY - bullet->getPosition().y;*/
 		float length = abs(end.x) + abs(end.y);
 		if (gun->getMaxLength() != -1)
 			length = gun->getMaxLength();
@@ -409,9 +409,6 @@ void HelloWorld::shoot(const Point& touchDiffPos)
 		auto moveTo = MoveTo::create(realMoveDuration, realDest);
 		//@todo 转到45度角时，bulletline会被拉大1.414倍，需要做细微调整
 		auto scaleTo = ScaleTo::create((float)gun->getBulletLineLength() / (float)gun->getBulletSpd() *2, gun->getBulletLineLength() / 10, 1);
-		/*auto moveWithHitTest = Spawn::createWithTwoActions(moveTo,
-			CallFuncN::create(std::bind(&HelloWorld::hitTest, this, bullet, _enemies->getNpcsVectorClone(-diff))));
-			*/
 		//bullet->stopAllActions();
 		// 根据偏移调整后的角度
 		bullet->setRotation(getCocosAngle(realDest - _player->getPosition()));
@@ -437,6 +434,7 @@ void HelloWorld::shoot(const Point& touchDiffPos)
 }
 void HelloWorld::characterHitTest(float dt)
 {
+    /*
 	for (int i = 0; i < _buffs.size(); i ++)
 	{
 		Buff* buf = _buffs.at(i);
@@ -455,6 +453,7 @@ void HelloWorld::characterHitTest(float dt)
 			i++;
 		}
 	}
+     */
 }
 
 void HelloWorld::hitTest(float dt)
@@ -569,17 +568,17 @@ bool HelloWorldHud::init()
 	}
 
 	auto visibleSize = Director::getInstance()->getVisibleSize();
-	label = Label::createWithTTF("0", "fonts/Marker Felt.ttf", 40, Size(50, 20), TextHAlignment::RIGHT);
-	label->setColor(Color3B(0, 0, 0));
-	anothor_label = Label::createWithTTF("0", "fonts/Marker Felt.ttf", 40, Size(50, 20), TextHAlignment::RIGHT);
-	anothor_label->setColor(Color3B(0, 0, 0));
+	//label = Label::createWithTTF("0", "fonts//Marker Felt.ttf", 40, Size(50, 20), TextHAlignment::RIGHT);
+	//label->setColor(Color3B(0, 0, 0));
+	//anothor_label = Label::createWithTTF("0", "fonts//Marker Felt.ttf", 40, Size(50, 20), TextHAlignment::RIGHT);
+	//anothor_label->setColor(Color3B(0, 0, 0));
 	int margin = 10;
-	label->setPosition(visibleSize.width - (label->getDimensions().width / 2) - margin,
-		visibleSize.height / 2);
-	anothor_label->setPosition(visibleSize.width - (label->getDimensions().width / 2) - margin,
-		label->getDimensions().height / 2 + margin + 20);
-	this->addChild(label);
-	this->addChild(anothor_label);
+	//label->setPosition(visibleSize.width - (label->getDimensions().width / 2) - margin,
+	//	visibleSize.height / 2);
+	//anothor_label->setPosition(visibleSize.width - (label->getDimensions().width / 2) - margin,
+	//	label->getDimensions().height / 2 + margin + 20);
+	//this->addChild(label);
+	//this->addChild(anothor_label);
 
 	return true;
 }
@@ -590,7 +589,7 @@ void HelloWorldHud::numCollectedChanged(float numCollected)
 		_maxNum = numCollected;*/
 	char showStr[20];
 	sprintf(showStr, "%f", numCollected);
-	label->setString(showStr);
+	//label->setString(showStr);
 }
 
 void HelloWorldHud::maxSprite(const string& gunName)
@@ -600,5 +599,5 @@ void HelloWorldHud::maxSprite(const string& gunName)
 
 	char showStr[20];
 	//sprintf(showStr, "", numCollected);
-	anothor_label->setString(gunName.c_str());
+	//anothor_label->setString(gunName.c_str());
 }

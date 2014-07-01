@@ -18,11 +18,18 @@ Sprite* createWithAssets(string filename)
 {
 	Sprite* ret = Sprite::create();
 
+    //@todo:
+    // 使用更高效的读取方式，现在的读取太耗费性能了
 	if (SpriteFrameCache::getInstance()->getSpriteFrameByName(filename) == nullptr)
 		SpriteFrameCache::getInstance()->addSpriteFramesWithFile("assets.plist", "assets.png");
 
 	ret->setSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName(filename));
 
+    if (ret == nullptr)
+    {
+		string error = filename + " 加载失败";
+		cocos2d::log(error.c_str());
+    }
 	return ret;
 }
 
