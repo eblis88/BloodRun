@@ -1,6 +1,7 @@
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
 //#include "GameOverScene.h"
+#include "HRocker.h"
 #include <DataModelBase.h>
 #include <algorithm>
 #include <functional>  
@@ -34,6 +35,21 @@ Scene* HelloWorld::createScene()
 	_hud = hud;
 	_hud->setGameLayer(layer);
 
+
+	Sprite *spRocker = createWithAssets("direction.png");//Ò¡¸Ë 
+	Sprite *spRockerBG = createWithAssets("dir_back.png");//Ò¡¸Ë±³¾° 
+	HRocker *rocker = HRocker::HRockerWithCenter(ccp(0, 0), 50.0f, spRocker, spRockerBG, false);//´´½¨Ò¡¸Ë 
+	rocker->setGameLayer(layer);
+
+	scene->addChild(rocker);//Ò¡¸ËÌí¼Óµ½layerÖÐ 
+	//this ÊÇ¸ölayer 
+
+	Sprite *spRocker2 = createWithAssets("direction.png");//Ò¡¸Ë 
+	Sprite *spRockerBG2 = createWithAssets("dir_back.png");//Ò¡¸Ë±³¾° 
+	HRocker* rocker2 = HRocker::HRockerWithCenter(ccp(210.0f, 130.0f), 50.0f, spRocker2, spRockerBG2, true);//´´½¨Ò¡¸Ë 
+	rocker2->setGameLayer(layer);
+	scene->addChild(rocker2);//Ò¡¸ËÌí¼Óµ½layerÖÐ 
+
     // add layer as a child to scene
     scene->addChild(layer);
 	scene->addChild(hud);
@@ -65,22 +81,23 @@ void HelloWorld::onEnter()
 {  
     Layer::onEnter();  
     
-	auto listener = EventListenerTouchOneByOne::create();
-	//lambda expression: advanced feature in C++ 11
-	listener->onTouchBegan = [&](Touch *touch, Event *unused_event)->bool { 
-		_shootPoint = this->convertToNodeSpace(touch->getLocation()) - _player->getPosition();
-		_player->setRotation(getCocosAngle(_shootPoint));
-		_isShooting = true;
-		return true; 
-	};
-	listener->onTouchMoved = [&](Touch *touch, Event *unused_event) {
-		_shootPoint = this->convertToNodeSpace(touch->getLocation()) - _player->getPosition();
-		_player->setRotation(getCocosAngle(_shootPoint));
-	};
-	listener->onTouchEnded = [&](Touch *touch, Event *unused_event) { 
-		_isShooting = false;};
-		//CC_CALLBACK_2(HelloWorld::onTouchEnded, this);
-	this->_eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
+
+	//auto listener = EventListenerTouchOneByOne::create();
+	////lambda expression: advanced feature in C++ 11
+	//listener->onTouchBegan = [&](Touch *touch, Event *unused_event)->bool { 
+	//	_shootPoint = this->convertToNodeSpace(touch->getLocation()) - _player->getPosition();
+	//	_player->setRotation(getCocosAngle(_shootPoint));
+	//	_isShooting = true;
+	//	return true; 
+	//};
+	//listener->onTouchMoved = [&](Touch *touch, Event *unused_event) {
+	//	_shootPoint = this->convertToNodeSpace(touch->getLocation()) - _player->getPosition();
+	//	_player->setRotation(getCocosAngle(_shootPoint));
+	//};
+	//listener->onTouchEnded = [&](Touch *touch, Event *unused_event) { 
+	//	_isShooting = false;};
+	//	//CC_CALLBACK_2(HelloWorld::onTouchEnded, this);
+	//this->_eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
 
 	/*auto listener_keyboard = EventListenerKeyboard::create();
 	listener_keyboard->onKeyPressed = CC_CALLBACK_2(HelloWorld::onPressKey, this);
@@ -131,7 +148,7 @@ bool HelloWorld::init()
 
 	//_hud->numCollectedChanged(_player->getGun()->getGunName());
 
-	//setViewPointCenter(_player->getPosition());
+	setViewPointCenter(_player->getPosition());
 
 	addChild(_tileMap, -3);
 
@@ -157,7 +174,7 @@ bool HelloWorld::init()
 	//this->schedule(schedule_selector(HelloWorld::renderProjectile));
 	this->scheduleUpdate();
 
-	//initjoystick();
+	initjoystick();
 
     return true;
 }
@@ -261,7 +278,7 @@ void HelloWorld::update(float dt)
 
 void HelloWorld::trySetPlayerPos(const Point& pos)
 {
-    /*
+    
 	Point new_pos = pos;
 	if (pos.x < _player->getContentSize().width / 2) new_pos.x = _player->getContentSize().width / 2;
 	if (pos.x > _tileMap->getContentSize().width - _player->getContentSize().width / 2)
@@ -276,7 +293,7 @@ void HelloWorld::trySetPlayerPos(const Point& pos)
 		_player->walkTo(new_pos - _player->getPosition());
 		this->setViewPointCenter(_player->getPosition());
 	}
-     */
+     
 }
 
 void HelloWorld::win()
