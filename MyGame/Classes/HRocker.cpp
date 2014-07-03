@@ -101,6 +101,7 @@ HRocker* HRocker::initWithCenter(CCPoint aPoint ,float aRadius ,CCSprite* aJsSpr
   
     currentPoint = centerPoint; 
     jsSprite = aJsSprite; 
+	bgSprite = aJsBg;
     jsSprite->setPosition(centerPoint); 
     aJsBg->setPosition(centerPoint); 
     aJsBg->setTag(88); 
@@ -109,27 +110,47 @@ HRocker* HRocker::initWithCenter(CCPoint aPoint ,float aRadius ,CCSprite* aJsSpr
     if(isFollowRole){ 
 		this->setVisible(false);
     } 
-    this->onEnter();//激活摇杆 
+    //this->onEnter();//激活摇杆 
     return this; 
 } 
 
 void HRocker::onEnter() {
 	Layer::onEnter();
 	auto listener = EventListenerTouchOneByOne::create();
+	// OnTouchBegan吞没
 	listener->setSwallowTouches(true);
 	listener->onTouchBegan = [=](Touch* touch, Event* event){
-		Point locationInNode = this->convertToNodeSpace(touch->getLocation());
-		Size s = this->getContentSize();
+		auto target = static_cast<Sprite*>(event->getCurrentTarget());
+		Point touchLoc = target->convertToNodeSpace(touch->getLocation());
+		Size s = this->jsSprite->getContentSize();
 		Rect rect = Rect(0, 0, s.width, s.height);
-		if (rect.containsPoint(locationInNode))
+		if (rect.containsPoint(touchLoc))
 		{
-			this->setColor(Color3B::RED);
+			//this->setVisible(false);
 			return true;
 		}
 		return false;
 	};
 
 	listener->onTouchMoved = [=](Touch* touch, Event* event){
-		//this->setPosition(this->getPosition() + touch->getDelta());
+		//Rect rect = Rect(0, 0, bgSprite->getContentSize().width, bgSprite->getContentSize().height);
+		Point touchPoint = this->jsSprite->getPosition() + touch->getDelta();
+		//Point centerPoint = this->bgSprite->getPosition();
+		//Point currPoint;
+		if (ccpDistance(touchPoint, centerPoint) > radius)
+		{ 
+			currentPoint =ccpAdd(centerPoint,ccpMult(ccpNormalize(ccpSub(touchPoint, centerPoint)), radius)); 
+		}else { 
+			currentPoint = touchPoint; 
+		} 
+
+		this->jsSprite->setPosition(currentPoint);
 	};
+
+	listener->onTouchEnded = [=](Touch* touch, Event* event){
+		float cost_time = centerPoint.getDistance(currentPoint) / radius * 0.5;
+		this->jsSprite->runAction(MoveTo::create(cost_time, centerPoint));
+	};
+
+	_eventDispatcher->addEventListenerWithSceneGraphPriority(listener, jsSprite);
 }

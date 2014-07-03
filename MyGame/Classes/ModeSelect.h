@@ -19,7 +19,7 @@ public:
 	~ModeSelect(void);
 
 	//virtual void onEnter();
-	virtual void onExit();
+	//virtual void onExit();
 	
 	bool init();
 	CREATE_FUNC(ModeSelect);

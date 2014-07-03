@@ -19,6 +19,8 @@ USING_NS_CC;
 //using namespace cocos2d::ui;
 
 HelloWorldHud *HelloWorld::_hud = NULL;
+HRocker *HelloWorld::_movejoy = NULL;
+HRocker *HelloWorld::_firejoy = NULL;
 
 Scene* HelloWorld::createScene()
 {
@@ -38,19 +40,19 @@ Scene* HelloWorld::createScene()
 
 	Sprite *spRocker = createWithAssets("direction.png");//Ò¡¸Ë 
 	Sprite *spRockerBG = createWithAssets("dir_back.png");//Ò¡¸Ë±³¾° 
-	HRocker *rocker = HRocker::HRockerWithCenter(ccp(0, 0), 50.0f, spRocker, spRockerBG, false);//´´½¨Ò¡¸Ë 
+	HRocker *rocker = HRocker::HRockerWithCenter(ccp(spRockerBG->getContentSize().width / 2, spRockerBG->getContentSize().height / 2), 50.0f, spRocker, spRockerBG, false);//´´½¨Ò¡¸Ë 
 	rocker->setGameLayer(layer);
-
-	scene->addChild(rocker);//Ò¡¸ËÌí¼Óµ½layerÖÐ 
+	_movejoy = rocker;
+	scene->addChild(rocker, 10);//Ò¡¸ËÌí¼Óµ½layerÖÐ 
 	//this ÊÇ¸ölayer 
 
-	Sprite *spRocker2 = createWithAssets("direction.png");//Ò¡¸Ë 
-	Sprite *spRockerBG2 = createWithAssets("dir_back.png");//Ò¡¸Ë±³¾° 
-	HRocker* rocker2 = HRocker::HRockerWithCenter(ccp(210.0f, 130.0f), 50.0f, spRocker2, spRockerBG2, true);//´´½¨Ò¡¸Ë 
-	rocker2->setGameLayer(layer);
-	scene->addChild(rocker2);//Ò¡¸ËÌí¼Óµ½layerÖÐ 
+	//Sprite *spRocker2 = createWithAssets("direction.png");//Ò¡¸Ë 
+	//Sprite *spRockerBG2 = createWithAssets("dir_back.png");//Ò¡¸Ë±³¾° 
+	//HRocker* rocker2 = HRocker::HRockerWithCenter(ccp(210.0f, 130.0f), 50.0f, spRocker2, spRockerBG2, true);//´´½¨Ò¡¸Ë 
+	//rocker2->setGameLayer(layer);
+	//scene->addChild(rocker2, 10);//Ò¡¸ËÌí¼Óµ½layerÖÐ 
 
-    // add layer as a child to scene
+ //   // add layer as a child to scene
     scene->addChild(layer);
 	scene->addChild(hud);
 
@@ -274,6 +276,8 @@ void HelloWorld::update(float dt)
 
 	//this->_hud->maxSprite(_enemies->getNpcs().size());
 	#endif
+
+	trySetPlayerPos(_player->getPosition() + _movejoy->getRockerAction());
 }
 
 void HelloWorld::trySetPlayerPos(const Point& pos)

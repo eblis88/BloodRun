@@ -13,6 +13,7 @@ using namespace std;
 class HelloWorld;
 class Character;
 class NpcManager;
+class HRocker;
 
 class HelloWorldHud : public Layer
 {
@@ -68,6 +69,9 @@ private:
 	//TMXLayer *_meta;// = nullptr;
 	int _numCollected;
 	static HelloWorldHud *_hud;
+	static HRocker* _movejoy;
+	static HRocker* _firejoy;
+
 	NpcManager* _enemies;// = nullptr;
 	Vector<Sprite *> _projectiles;
 	Vector<Buff* > _buffs;

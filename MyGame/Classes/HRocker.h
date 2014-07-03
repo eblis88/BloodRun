@@ -31,6 +31,10 @@ public :
 
 	CC_SYNTHESIZE(HelloWorld *, _gameLayer, GameLayer);
   
+
+	CREATE_FUNC(HRocker);
+
+	Vec2 getRockerAction() { return currentPoint - centerPoint; }
 private: 
     HRocker * initWithCenter(CCPoint aPoint ,float aRadius ,CCSprite* aJsSprite,CCSprite* aJsBg,bool _isFollowRole); 
   
@@ -43,6 +47,7 @@ private:
     float radius;//摇杆半径 
   
     CCSprite *jsSprite; 
+	Sprite* bgSprite;
   
     bool isFollowRole;//是否跟随用户点击 
   
@@ -52,15 +57,14 @@ private:
   
     void  updatePos(float dt); 
   
-    CREATE_FUNC(HRocker); 
 
 	void onEnter() override;
 
-	void onExit() override
+	/*void onExit() override
 	{
 		_eventDispatcher->removeEventListener(_listener);
 		Layer::onExit();
-	};
+	};*/
 
 private:
 	EventListener* _listener;

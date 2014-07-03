@@ -127,16 +127,16 @@ void GunRush::levelSelect(Ref* sender, Widget::TouchEventType touchType, int lev
 
 
 //退出场景函数，用于清理资源
-void ModeSelect::onExit()
-{
-    //m_pUILayer->removeFromParent();
-     
-    //SceneReader::sharedSceneReader()->purge();
-    //GUIReader::shareReader()->purge();
-    //ActionManager::shareManager()->purge();
-     
-    CCScene::onExit();
-}
+//void ModeSelect::onExit()
+//{
+//    //m_pUILayer->removeFromParent();
+//     
+//    //SceneReader::sharedSceneReader()->purge();
+//    //GUIReader::shareReader()->purge();
+//    //ActionManager::shareManager()->purge();
+//     
+//    CCScene::onExit();
+//}
 ////关闭按钮的回调函数
 //void ModeSelect::menuCloseCallback(CCObject* pSender, TouchEventType type)
 //{    //判断触摸事件的类型，如果是TOUCH_EVENT_ENDED触摸结束就关闭当前程序
