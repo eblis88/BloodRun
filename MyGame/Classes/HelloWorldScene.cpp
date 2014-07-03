@@ -277,7 +277,10 @@ void HelloWorld::update(float dt)
 	//this->_hud->maxSprite(_enemies->getNpcs().size());
 	#endif
 
-	trySetPlayerPos(_player->getPosition() + _movejoy->getRockerAction());
+	trySetPlayerPos(_player->getPosition() + _movejoy->getRockerAction() *2);
+
+	
+	_hud->numCollectedChanged(100000*(int)_movejoy->getRockerAction().x + (int)_movejoy->getRockerAction().y);
 }
 
 void HelloWorld::trySetPlayerPos(const Point& pos)
@@ -589,17 +592,17 @@ bool HelloWorldHud::init()
 	}
 
 	auto visibleSize = Director::getInstance()->getVisibleSize();
-	//label = Label::createWithTTF("0", "fonts//Marker Felt.ttf", 40, Size(50, 20), TextHAlignment::RIGHT);
-	//label->setColor(Color3B(0, 0, 0));
-	//anothor_label = Label::createWithTTF("0", "fonts//Marker Felt.ttf", 40, Size(50, 20), TextHAlignment::RIGHT);
-	//anothor_label->setColor(Color3B(0, 0, 0));
+	label = Label::createWithTTF("0", "fonts//Marker Felt.ttf", 40, Size(50, 20), TextHAlignment::RIGHT);
+	label->setColor(Color3B(0, 0, 0));
+	anothor_label = Label::createWithTTF("0", "fonts//Marker Felt.ttf", 40, Size(50, 20), TextHAlignment::RIGHT);
+	anothor_label->setColor(Color3B(0, 0, 0));
 	int margin = 10;
-	//label->setPosition(visibleSize.width - (label->getDimensions().width / 2) - margin,
-	//	visibleSize.height / 2);
-	//anothor_label->setPosition(visibleSize.width - (label->getDimensions().width / 2) - margin,
-	//	label->getDimensions().height / 2 + margin + 20);
-	//this->addChild(label);
-	//this->addChild(anothor_label);
+	label->setPosition(visibleSize.width - (label->getDimensions().width / 2) - margin,
+		visibleSize.height / 2);
+	anothor_label->setPosition(visibleSize.width - (label->getDimensions().width / 2) - margin,
+		label->getDimensions().height / 2 + margin + 20);
+	this->addChild(label);
+	this->addChild(anothor_label);
 
 	return true;
 }
@@ -610,7 +613,7 @@ void HelloWorldHud::numCollectedChanged(float numCollected)
 		_maxNum = numCollected;*/
 	char showStr[20];
 	sprintf(showStr, "%f", numCollected);
-	//label->setString(showStr);
+	label->setString(showStr);
 }
 
 void HelloWorldHud::maxSprite(const string& gunName)
@@ -620,5 +623,5 @@ void HelloWorldHud::maxSprite(const string& gunName)
 
 	char showStr[20];
 	//sprintf(showStr, "", numCollected);
-	//anothor_label->setString(gunName.c_str());
+	anothor_label->setString(gunName.c_str());
 }

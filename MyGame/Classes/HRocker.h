@@ -34,7 +34,7 @@ public :
 
 	CREATE_FUNC(HRocker);
 
-	Vec2 getRockerAction() { return currentPoint - centerPoint; }
+	Vec2 getRockerAction() { return jsSprite->getPosition() - bgSprite->getPosition(); }
 private: 
     HRocker * initWithCenter(CCPoint aPoint ,float aRadius ,CCSprite* aJsSprite,CCSprite* aJsBg,bool _isFollowRole); 
   

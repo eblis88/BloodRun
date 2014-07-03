@@ -145,10 +145,12 @@ void HRocker::onEnter() {
 		} 
 
 		this->jsSprite->setPosition(currentPoint);
+
+		//this->_gameLayer
 	};
 
 	listener->onTouchEnded = [=](Touch* touch, Event* event){
-		float cost_time = centerPoint.getDistance(currentPoint) / radius * 0.5;
+		float cost_time = centerPoint.getDistance(currentPoint) / radius * 0.1;
 		this->jsSprite->runAction(MoveTo::create(cost_time, centerPoint));
 	};
 

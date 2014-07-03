@@ -62,13 +62,15 @@ public:
 
 	
 	//rapidjson::Document doc;
+	
+	static HelloWorldHud *_hud;
+
 private:
 	TMXTiledMap *_tileMap;// = nullptr;
 	Character *_player;// = nullptr;
 
 	//TMXLayer *_meta;// = nullptr;
 	int _numCollected;
-	static HelloWorldHud *_hud;
 	static HRocker* _movejoy;
 	static HRocker* _firejoy;
 
